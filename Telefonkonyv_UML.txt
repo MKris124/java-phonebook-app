@@ -1,0 +1,70 @@
+                                                     +----------------------+
+                                                     |   AppControllerImp   |
+                                                     +----------------------+
+                                                     |                      |
+                                                     | -contactRepository:  |
+                                                     |    ContactRepository |
+                                                     +----------------------+
+                                                             △
+                                                             |
+                                                             |
+                                          implements       uses
+                                                             |
+                                                             |
+                          +--------------------+             |
+                          |   AppController    |<-----------+
+                          +--------------------+
+                          |   +addContact()    |
+                          |   +removeContact() |
+                          |   +listContacts()  |
+                          |   +searchContacts()|
+                          |   +updateContact() |
+                          +--------------------+
+                              △
+                              |
+                              |
+                              |                    +-------------------------+
+                 implements   |                    |        PersonRepo       |
+                              |                    +-------------------------+
+                              |                    |  -contacts: List<Person>|
+                              |                    |-------------------------|                         
+                              +--------------------|  +addContact()          |
+                                                   |  +removeContact()       |
+                                                   |  +getAllContacts()      |
+                                                   |  +searchContactsByName()|
+                                                   |  +updateContact()       |
+                                                   +-------------------------+
+                                                               △
+                                                               |
+                                                               |
+                                                uses           |
+                                                               |
+                                                               |
+                          +-------------------------+          |
+                          |  ContactRepository      |<---------+
+                          +-------------------------+
+                          |  +addContact()          |
+                          |  +removeContact()       |
+                          |  +getAllContacts()      |
+                          |  +searchContactsByName()|
+                          |  +updateContact()       |
+                          +-------------------------+
+
+                                         △
+                                         |
+                                         |
+                 +-----------------------|
+                 |                       |                  
+                 |                       |                   
++-----------------------------+      +---------------------+      
+|            Person           |      |     FileHandler     |      
++-----------------------------+      +---------------------+     
+| -firstName: String          |      | +saveToFile()       |     
+| -lastName: String           |      | +loadFromFile()     |     
+| -nickname: String           |      +---------------------+     
+| -address: String            |                              
+| -workPhoneNumber: String    |                              
+| -privatePhoneNumber: String |                           
++-----------------------------+                           
+| +toString()                 |                           
++-----------------------------+
